@@ -5,6 +5,8 @@ import javax.persistence.*;
 
 import org.openxava.annotations.*;
 
+import com.tuempresa.facturacion.calculadores.*;
+
 import lombok.*;
 
 @Entity @Getter @Setter
@@ -13,6 +15,10 @@ public class Producto {
 	 int numero;
 	 @Column(length=50) @Required
 	 String descripcion;
+	 
+	 @ManyToOne (fetch=FetchType.LAZY)
+	 @DescriptionsList
+	 Autor autor;
 	 
 	 @ManyToOne
 	 (fetch=FetchType.LAZY,
@@ -29,4 +35,6 @@ public class Producto {
 	 
 	 @TextArea
 	 String observaciones;
+	 
+	 
 }
