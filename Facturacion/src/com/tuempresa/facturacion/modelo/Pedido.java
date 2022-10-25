@@ -3,6 +3,7 @@ package com.tuempresa.facturacion.modelo;
 import java.time.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import org.openxava.annotations.*;
 
@@ -20,15 +21,6 @@ import lombok.*;
        + "observaciones"
 		)
 
-@EntityValidator(
-		value=com.tuempresa.facturacion.validadores.ValidadorEntregadoParaEstarEnFactura.class,
-		properties = {
-				@PropertyValue(name="anyo"),
-				@PropertyValue(name="numero"),
-				@PropertyValue(name="factura"),
-				@PropertyValue(name="entregado")
-				
-		})
 public class Pedido extends DocumentoComercial{
 
 	@ManyToOne
@@ -55,4 +47,9 @@ public class Pedido extends DocumentoComercial{
 	
 	@Column (columnDefinition = "BOOLEAN DEFAULT FALSE")
 	boolean entregado;
+	
+	@AssertTrue(message = "pedido_debe_estar_entregado")
+	private boolean isEntregadoParaEstarEnFactura() {
+		return factura == null || isEntregado();
+	}
 }
