@@ -1,2 +1,102 @@
-/*C3*/SET SCHEMA PUBLIC
+/*C2*/SET SCHEMA PUBLIC
 DISCONNECT
+/*C4*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C5*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C6*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C7*/SET SCHEMA PUBLIC
+CREATE SCHEMA CHIKILINEA AUTHORIZATION SA
+create table Chikilinea.IMAGES (ID varchar(255) not null, GALLERY varchar(255), IMAGE varbinary(16777216), primary key (ID))
+create table Chikilinea.OXDISCUSSIONCOMMENTS (id varchar(32) not null, comment clob(16777216), discussionId varchar(32), time timestamp, userName varchar(30), primary key (id))
+create table Chikilinea.Persona (oid varchar(32) not null, apellidos varchar(64), fotografia varchar(32), nombres varchar(64), pais varchar(32), primary key (oid))
+create table Chikilinea.TuPrimeraEntidad (id varchar(32) not null, descripcion varchar(50), fecha date, importe numeric(19,2), primary key (id))
+create index Chikilinea.IDXbhlx4vunn24ym1tbrlgq8g30m on Chikilinea.OXDISCUSSIONCOMMENTS (discussionId)
+SET SCHEMA CHIKILINEA
+INSERT INTO PERSONA VALUES('402881cd8414e5d2018414e656a70000','Jonas','14E64E4CC0A8014D0000000038CE5B0C','Jesus','Mexico')
+COMMIT
+SET SCHEMA PUBLIC
+DISCONNECT
+/*C8*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C9*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C10*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C11*/SET SCHEMA PUBLIC
+alter table CHIKILINEA.PERSONA add column calle varchar(32)
+alter table CHIKILINEA.PERSONA add column colonia varchar(64)
+alter table CHIKILINEA.PERSONA add column estado varchar(32)
+alter table CHIKILINEA.PERSONA add column municipio varchar(64)
+SET SCHEMA CHIKILINEA
+INSERT INTO PERSONA VALUES('402881cd8414e87b018414e93b850000','Quiterio','14E8D247C0A8014D0000000010127B21','Jesus','Mexico','72 entre 76','Rojo Gomez','Quintana Roo','Felipe carrillo Muerto')
+COMMIT
+SET SCHEMA PUBLIC
+DISCONNECT
+/*C12*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C13*/SET SCHEMA PUBLIC
+alter table CHIKILINEA.PERSONA add column Tupais varchar(32)
+DISCONNECT
+/*C14*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C15*/SET SCHEMA CHIKILINEA
+DELETE FROM PERSONA WHERE OID='402881cd8414e5d2018414e656a70000'
+COMMIT
+DELETE FROM PERSONA WHERE OID='402881cd8414e87b018414e93b850000'
+COMMIT
+SET SCHEMA PUBLIC
+DISCONNECT
+/*C16*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C17*/SET SCHEMA CHIKILINEA
+INSERT INTO PERSONA VALUES('402881cd8414efb5018414f095a90000','Quiterio','14F024B6C0A8014D00000000D11EB6DA','Jesus','Mexico','72 entre 76','Rojo Gomez','Quintana Roo','Felipe Carrillo Puerto ','Mexico')
+COMMIT
+SET SCHEMA PUBLIC
+DISCONNECT
+/*C18*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C19*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C20*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C21*/SET SCHEMA PUBLIC
+create table Chikilinea.Empleado (oid varchar(32) not null, Tupais varchar(32), apellido varchar(64), calle varchar(32), colonia varchar(64), estado varchar(32), municipio varchar(64), pais varchar(32), fotografia varchar(32), nombre varchar(64), primary key (oid))
+DISCONNECT
+/*C22*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C23*/SET SCHEMA CHIKILINEA
+INSERT INTO EMPLEADO VALUES('402881cd8414f890018414f9fc280000','Guinea Ecuatorial','Chikil','88 entre 90','Benito Juarez','Colima','Polyuc','Mexico','14F98150C0A8014D000000003349C959','kevin')
+COMMIT
+SET SCHEMA PUBLIC
+DISCONNECT
+/*C24*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C25*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C26*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C28*/SET SCHEMA PUBLIC
+create table Chikilinea.Pais (oid varchar(32) not null, nombre varchar(32), primary key (oid))
+/*C27*/SET SCHEMA CHIKILINEA
+INSERT INTO PAIS VALUES('402880e48415d158018415d2229b0000','AeroExpress')
+COMMIT
+SET SCHEMA PUBLIC
+DISCONNECT
+/*C28*/DISCONNECT
+/*C29*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C30*/SET SCHEMA PUBLIC
+create table Chikilinea.Aerolinea (oid varchar(32) not null, nombre varchar(32), pais_oid varchar(32), primary key (oid))
+alter table Chikilinea.Aerolinea add constraint FK869alyut3kxf6mlu4gict9y1n foreign key (pais_oid) references Chikilinea.Pais
+SET SCHEMA CHIKILINEA
+INSERT INTO PAIS VALUES('402880e48415d353018415d5435c0000','Estados Unidos')
+COMMIT
+SET SCHEMA PUBLIC
+DISCONNECT
+/*C31*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C32*/SET SCHEMA CHIKILINEA
+INSERT INTO PAIS VALUES('402880e48415d7e5018415d86c1e0000','Jamaica')
+COMMIT
