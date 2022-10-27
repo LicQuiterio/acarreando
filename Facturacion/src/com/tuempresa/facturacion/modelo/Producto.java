@@ -41,6 +41,7 @@ public class Producto {
     //String isbn;
     
     
-    @Column(length=13) @ISBN
-    String isbn;
+    @Column(length=13) 
+    @ISBN (buscar=false)
+     String isbn;
 }
